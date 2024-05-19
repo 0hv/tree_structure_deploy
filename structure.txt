@@ -1,0 +1,11 @@
+ root_directory
+ │
+ ├── directory1/
+ │   ├── subdirectory1/
+ │   │   └── file1.txt
+ │   └── file2.txt
+ │
+ ├── directory2/
+ │   └── file3.txt
+ │
+ └── file4.txt
