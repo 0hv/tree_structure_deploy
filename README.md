@@ -1,4 +1,4 @@
-# 📂 Directory Structure Parser 📂
+# 📂 Tree Structure Deploy 📂
 
 This Python project analyzes a textual representation of a directory structure to extract the paths of files and directories. It saves these paths into separate files for directories and files respectively. Finally, it utilizes the saved paths to recreate the original directory structure on the file system.
 
