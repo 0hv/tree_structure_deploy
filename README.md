@@ -86,13 +86,13 @@ project
 Running the script will generate the following output:
 
 ```bash
+Paths saved to file: directories.txt
+Paths saved to file: files.txt
 Root directory created: project
 Directory created: project/src
 Directory created: project/src/utils
 Directory created: project/docs
 Directory created: project/data
-Paths saved to file: directories.txt
-Paths saved to file: files.txt
 File created: project/src/main.py
 File created: project/src/utils/helper.py
 File created: project/docs/README.md
