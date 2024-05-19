@@ -1,4 +1,4 @@
-# 📂 Tree Structure Deploy 📂
+# 📂 Directory Structure Parser 📂
 
 This Python project analyzes a textual representation of a directory structure to extract the paths of files and directories. It saves these paths into separate files for directories and files respectively. Finally, it utilizes the saved paths to recreate the original directory structure on the file system.
 
@@ -37,7 +37,7 @@ This Python project analyzes a textual representation of a directory structure t
 3. Run the Python script:
 
 ```bash
-python3 tree_structure_deploy.py
+python3 directory_structure_parser.py
 ```
 
 4. The script will parse the "structure.txt" file, extract the file and directory paths, and save them to "directories.txt" and "files.txt" respectively.
@@ -85,18 +85,20 @@ project
 
 Running the script will generate the following output:
 
-> Root directory created: project
-> Directory created: project/src
-> Directory created: project/src/utils
-> Directory created: project/docs
-> Directory created: project/data
-> Paths saved to file: directories.txt
-> Paths saved to file: files.txt
-> File created: project/src/main.py
-> File created: project/src/utils/helper.py
-> File created: project/docs/README.md
-> File created: project/data/input.csv
-> File created: project/data/output.txt
+```bash
+Root directory created: project
+Directory created: project/src
+Directory created: project/src/utils
+Directory created: project/docs
+Directory created: project/data
+Paths saved to file: directories.txt
+Paths saved to file: files.txt
+File created: project/src/main.py
+File created: project/src/utils/helper.py
+File created: project/docs/README.md
+File created: project/data/input.csv
+File created: project/data/output.txt
+```
 
 The resulting directory structure will be created on the file system.
 
