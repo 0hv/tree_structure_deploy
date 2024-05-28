@@ -1,4 +1,5 @@
 import os
+import math
 
 def parse_structure(lines):
     """
@@ -22,8 +23,9 @@ def parse_structure(lines):
     for line in lines:
         if not line.strip():
             continue  # Skip empty lines
-        # Calculate the indentation level by counting the number of '│' characters
-        indent_level = line.count('│')
+
+        # Count the number of spaces before the first alphabetic character
+        indent_level = len(line) - len(line.lstrip(' │'))
 
         # Clean the line to get the file or directory name
         clean_line = line.strip().split('├── ')[-1].split('└── ')[-1].rstrip('/')
@@ -36,11 +38,11 @@ def parse_structure(lines):
 
         if line.strip().endswith('/'):
             # It's a directory
-            directories.append(current_path)
+            directories.append((current_path, indent_level))
             path_stack.append(clean_line)
         else:
             # It's a file
-            files.append(current_path)
+            files.append((current_path, indent_level))
 
     return root_dir, directories, files
 
@@ -50,39 +52,40 @@ def create_directory_structure(root_dir, directories):
 
     Args:
         root_dir (str): The root directory.
-        directories (list): List of directories to create.
+        directories (list): List of tuples containing directory paths and indentation levels.
     """
     # Create the root directory
     os.makedirs(root_dir, exist_ok=True)
     print(f"Root directory created: {root_dir}")
 
-    for directory in directories:
+    for directory, indent_level in directories:
         os.makedirs(directory, exist_ok=True)
-        print(f"Directory created: {directory}")
+        print(f"Directory created: {directory} (Level: {indent_level})")
 
 def create_files(files):
     """
     Create the files.
 
     Args:
-        files (list): List of file paths to create.
+        files (list): List of tuples containing file paths and indentation levels.
     """
-    for file_path in files:
+    for file_path, indent_level in files:
         directory = os.path.dirname(file_path)
         os.makedirs(directory, exist_ok=True)
         open(file_path, 'a').close()
-        print(f"File created: {file_path}")
+        print(f"File created: {file_path} (Level: {indent_level})")
 
 def save_paths_to_file(paths, file_name):
     """
     Save the paths to a file.
 
     Args:
-        paths (list): List of paths to save.
+        paths (list): List of tuples containing paths and indentation levels.
         file_name (str): The name of the file to save the paths in.
     """
     with open(file_name, 'w') as file:
-        file.write('\n'.join(paths))
+        for path, indent_level in paths:
+            file.write(f"{path} (Level: {indent_level})\n")
     print(f"Paths saved to file: {file_name}")
 
 # Path to the "structure.txt" file
